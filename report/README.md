@@ -6,7 +6,7 @@ This folder contains the final project report and generated visualisations.
 
 | File | Description |
 |------|-------------|
-| `Report.pdf` | Full write-up covering all 8 tasks + executive summary *(export notebook to PDF and place here)* |
+| `Report.pdf` | Full write-up covering all 8 tasks + executive summary  |
 | `task1_baseline.png` | Confusion matrix — Baseline Logistic Regression |
 | `task2_dimensionality.png` | Distance distribution plots (2 → 200 features) |
 | `task3_scaling.png` | Before/after distributions for MinMax, Standard, Robust scalers |
@@ -17,11 +17,4 @@ This folder contains the final project report and generated visualisations.
 | `task8_importance.png` | RF / MI / Permutation importance comparison |
 | `final_dashboard.png` | Before vs After engineering — full 6-panel dashboard |
 
-## How to generate Report.pdf
 
-1. Open `FeatureEngineering_Capstone.ipynb` in **Google Colab**
-2. Click `Runtime → Run all`
-3. `File → Print → Save as PDF`
-4. Rename the file to `Report.pdf` and upload it to this `/report/` folder
-
-> All chart PNGs are auto-saved when you run the notebook — upload them here too.
