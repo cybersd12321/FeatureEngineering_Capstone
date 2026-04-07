@@ -93,7 +93,7 @@ Kernel → Restart & Run All
 > ⚡ No local data file needed. Dataset is fetched automatically from:
 > ```
 > https://raw.githubusercontent.com/swapnilsaurav/Dataset/refs/heads/master/hotel_bookings.csv
-> ```
+> https://colab.research.google.com/drive/1VkxsXzo0ibb-xCJyqLP3Rn90QX5UtjsE?usp=sharing
 > Expected runtime: ~3–5 minutes on a standard laptop.
 
 ---
