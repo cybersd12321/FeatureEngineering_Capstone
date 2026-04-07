@@ -98,19 +98,6 @@ Kernel → Restart & Run All
 
 ---
 
-## 📋 Tasks Covered
-
-| # | Task | Key Output | 
-|---|------|-----------|---------------
-| 1 | Baseline Model + "What is a Feature?" | Confusion matrix · ROC-AUC = 0.8563 | 
-| 2 | Curse of Dimensionality Demo | Distance distribution plots (2 → 200 dims) | 
-| 3 | Numeric Preprocessing | Binning · binarisation · scaler comparison | 
-| 4 | Distance/Proximity Metrics | KNN: No scaling vs Standard vs Robust + Euclidean vs Manhattan |
-| 5 | End-to-End Numeric Pipeline | ColumnTransformer + 5-fold CV → AUC = 0.9903 | 
-| 6 | Feature Extraction | 7 DateTime features + OHE vs Target Encoding | 
-| 7 | Feature Construction | 8 constructed features + leakage prevention section | 
-| 8 | Feature Importance + Selection | RF + MI + Permutation + Chi-square · final 17 features | 
-| ★ | **Final Comparison** | 4-stage ROC-AUC / F1 dashboard | 
 
 
 ---
@@ -174,9 +161,9 @@ The biggest performance gains came from **preprocessing and feature extraction**
 - [x] **Final comparison table included** (4-stage dashboard in Final Task cell)
 - [x] `README.md` with full local run instructions
 - [x] `/src` folder with reusable helper functions
-- [ ] Add your Google Colab share link below
-- [ ] Upload `Report.pdf` to `/report/`
-- [ ] Submit PDF to Lumen with both links
+- [x] Add your Google Colab share link below
+- [x] Upload `Report.pdf` to `/report/`
+- [x] Submit PDF to Lumen with both links
 
 ---
 
