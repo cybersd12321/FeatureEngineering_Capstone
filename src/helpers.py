@@ -2,33 +2,20 @@
 src/helpers.py
 ==============
 Reusable utility functions for the StaySmart Hotels — Feature Engineering Capstone.
-
-Import in the notebook:
-    from src.helpers import evaluate_model, safe_agg_feature, plot_roc_curve, bar_compare
+All helpers are imported and re-exported from src/__init__.py.
 """
 
 import numpy as np
 import matplotlib.pyplot as plt
-from sklearn.metrics import (
-    accuracy_score, roc_auc_score, f1_score, roc_curve
-)
+from sklearn.metrics import accuracy_score, roc_auc_score, f1_score, roc_curve
 
 
 def evaluate_model(name, model, X_tr, X_te, y_tr, y_te, fit=True):
     """
     Fit (optional) and evaluate a binary classifier.
 
-    Parameters
-    ----------
-    name         : str   — label shown in comparison tables
-    model        : sklearn estimator with fit / predict / predict_proba
-    X_tr, y_tr   : training features & target
-    X_te, y_te   : test features & target
-    fit          : bool  — if False, assumes model is already fitted
-
-    Returns
-    -------
-    dict with keys: Model, Accuracy, ROC-AUC, F1, _prob, _pred
+    Returns a dict with keys:
+        Model, Accuracy, ROC-AUC, F1, _prob, _pred
     """
     if fit:
         model.fit(X_tr, y_tr)
@@ -41,6 +28,7 @@ def evaluate_model(name, model, X_tr, X_te, y_tr, y_te, fit=True):
         "F1":       round(f1_score(y_te,        pred), 4),
         "_prob":    prob,
         "_pred":    pred,
+        "_y_te":    y_te,
     }
 
 
@@ -49,25 +37,13 @@ def safe_agg_feature(df_train_index, df_full, group_col, target_col, new_col):
     Leakage-safe group-mean aggregation.
 
     Computes mean(target_col) per group using TRAINING ROWS ONLY,
-    then maps the result onto the full dataframe.
+    then maps onto the full dataframe — test targets never leak.
 
     Why this prevents leakage
     -------------------------
-    If we used the full dataset, test-row targets would leak into the feature
+    If we used the full dataset, test-row targets leak into the feature
     through the group mean. Training-only aggregation mimics production,
-    where future cancellation rates are unknown at prediction time.
-
-    Parameters
-    ----------
-    df_train_index : Index of training rows within df_full
-    df_full        : full DataFrame (modified in-place)
-    group_col      : column to group by     (e.g. 'country')
-    target_col     : column to aggregate    (e.g. 'is_canceled')
-    new_col        : name of new feature    (e.g. 'country_cancel_rate')
-
-    Returns
-    -------
-    (df_full, agg_map)  — agg_map is the {group: mean} Series
+    where future cancellation rates are unknown.
     """
     train_subset = df_full.loc[df_train_index]
     agg_map = train_subset.groupby(group_col)[target_col].mean()
@@ -76,11 +52,7 @@ def safe_agg_feature(df_train_index, df_full, group_col, target_col, new_col):
 
 
 def plot_roc_curve(ax, results_list, title="ROC Curve"):
-    """
-    Overlay ROC curves for a list of evaluate_model result dicts.
-
-    Each dict must contain: _prob, _y_te, ROC-AUC, Model.
-    """
+    """Overlay ROC curves for a list of evaluate_model result dicts."""
     for r in results_list:
         fpr, tpr, _ = roc_curve(r["_y_te"], r["_prob"])
         ax.plot(fpr, tpr, label=f"{r['Model']} (AUC={r['ROC-AUC']:.3f})")
@@ -93,20 +65,7 @@ def plot_roc_curve(ax, results_list, title="ROC Curve"):
 
 def bar_compare(df_results, metric_cols=("Accuracy", "ROC-AUC", "F1"),
                 title="Model Comparison", ax=None):
-    """
-    Grouped bar chart comparing multiple models on Accuracy / ROC-AUC / F1.
-
-    Parameters
-    ----------
-    df_results  : DataFrame with a 'Model' column + metric columns
-    metric_cols : tuple of metric names to plot
-    title       : chart title
-    ax          : matplotlib Axes to draw on (new figure created if None)
-
-    Returns
-    -------
-    ax
-    """
+    """Grouped bar chart comparing models on multiple metrics."""
     if ax is None:
         _, ax = plt.subplots(figsize=(10, 4))
     x = np.arange(len(df_results))
@@ -116,8 +75,8 @@ def bar_compare(df_results, metric_cols=("Accuracy", "ROC-AUC", "F1"),
         ax.bar(x + i * w, df_results[m], w, label=m,
                color=colors[i], alpha=0.85)
     ax.set_xticks(x + w)
-    ax.set_xticklabels(df_results["Model"], rotation=15,
-                       ha="right", fontsize=8)
+    ax.set_xticklabels(df_results["Model"],
+                       rotation=15, ha="right", fontsize=8)
     ax.set_ylim(0.5, 1.02)
     ax.set_title(title)
     ax.legend()
