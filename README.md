@@ -1,11 +1,11 @@
 # 🏨 StaySmart Hotels — Cancellation Risk Prediction
-### Data Preprocessing & Feature Engineering Capstone · Week 7
+### Data Preprocessing & Feature Engineering Capstone 
 
-> **Graded Assignment — BS in Data Science & AI, Year 1**  
+> **Graded Assignment — BS in Data Science & AI** 
 > Predicting hotel booking cancellations (`is_canceled`) using the Hotel Bookings dataset.  
 > Core goal: prove that **feature engineering + preprocessing drives performance** — not model complexity.
 
-[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/cybersd12321/FeatureEngineering_Capstone/blob/main/FeatureEngineering_Capstone.ipynb)
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/1VkxsXzo0ibb-xCJyqLP3Rn90QX5UtjsE?usp=sharing)
 
 ---
 
@@ -93,26 +93,25 @@ Kernel → Restart & Run All
 > ⚡ No local data file needed. Dataset is fetched automatically from:
 > ```
 > https://raw.githubusercontent.com/swapnilsaurav/Dataset/refs/heads/master/hotel_bookings.csv
-> https://colab.research.google.com/drive/1VkxsXzo0ibb-xCJyqLP3Rn90QX5UtjsE?usp=sharing
+>
 > Expected runtime: ~3–5 minutes on a standard laptop.
 
 ---
 
 ## 📋 Tasks Covered
 
-| # | Task | Key Output | Grading Area |
-|---|------|-----------|---------------|
-| 1 | Baseline Model + "What is a Feature?" | Confusion matrix · ROC-AUC = 0.8563 | Correctness (4 marks) |
-| 2 | Curse of Dimensionality Demo | Distance distribution plots (2 → 200 dims) | Distance quality (2 marks) |
-| 3 | Numeric Preprocessing | Binning · binarisation · scaler comparison | Preprocessing depth (3 marks) |
-| 4 | Distance/Proximity Metrics | KNN: No scaling vs Standard vs Robust + Euclidean vs Manhattan | Distance quality (2 marks) |
-| 5 | End-to-End Numeric Pipeline | ColumnTransformer + 5-fold CV → AUC = 0.9903 | Pipelines (3 marks) |
-| 6 | Feature Extraction | 7 DateTime features + OHE vs Target Encoding | Extraction (4 marks) |
-| 7 | Feature Construction | 8 constructed features + leakage prevention section | Construction (4 marks) |
-| 8 | Feature Importance + Selection | RF + MI + Permutation + Chi-square · final 17 features | Selection (2 marks) |
-| ★ | **Final Comparison** | 4-stage ROC-AUC / F1 dashboard | Reporting (2 marks) |
+| # | Task | Key Output | 
+|---|------|-----------|---------------
+| 1 | Baseline Model + "What is a Feature?" | Confusion matrix · ROC-AUC = 0.8563 | 
+| 2 | Curse of Dimensionality Demo | Distance distribution plots (2 → 200 dims) | 
+| 3 | Numeric Preprocessing | Binning · binarisation · scaler comparison | 
+| 4 | Distance/Proximity Metrics | KNN: No scaling vs Standard vs Robust + Euclidean vs Manhattan |
+| 5 | End-to-End Numeric Pipeline | ColumnTransformer + 5-fold CV → AUC = 0.9903 | 
+| 6 | Feature Extraction | 7 DateTime features + OHE vs Target Encoding | 
+| 7 | Feature Construction | 8 constructed features + leakage prevention section | 
+| 8 | Feature Importance + Selection | RF + MI + Permutation + Chi-square · final 17 features | 
+| ★ | **Final Comparison** | 4-stage ROC-AUC / F1 dashboard | 
 
-**Total: 20 marks + up to +2 bonus**
 
 ---
 
@@ -185,7 +184,7 @@ The biggest performance gains came from **preprocessing and feature extraction**
 
 | Resource | URL |
 |----------|-----|
-| 📓 Google Colab | *(replace with your public Colab share link)* |
+| 📓 Google Colab | https://colab.research.google.com/drive/1VkxsXzo0ibb-xCJyqLP3Rn90QX5UtjsE?usp=sharing |
 | 🗄️ Dataset | [hotel_bookings.csv](https://raw.githubusercontent.com/swapnilsaurav/Dataset/refs/heads/master/hotel_bookings.csv) |
 | 👤 GitHub Profile | [cybersd12321](https://github.com/cybersd12321) |
 
